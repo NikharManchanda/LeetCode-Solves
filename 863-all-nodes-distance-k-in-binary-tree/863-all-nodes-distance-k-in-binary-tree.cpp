@@ -32,7 +32,7 @@ public:
             }
             if(vis[top->val]>k+1)
                 break;
-            if(par.find(top)!=par.end() && par[top] &&!vis[par[top]->val])
+            if(par.find(top)!=par.end() && !vis[par[top]->val])
             {
                 q.push(par[top]);
                 vis[par[top]->val]=1+vis[top->val];
