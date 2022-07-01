@@ -25,40 +25,22 @@ public:
         // pre=root;
         
         // Method 2 Modified Morris
-        // TreeNode* cur=root;
-        // while(cur)
-        // {
-        //     if(cur->left)
-        //     {
-        //         TreeNode* prev=cur->left;
-        //         while(prev->right)
-        //         {
-        //             prev=prev->right;
-        //         }
-        //         prev->right=cur->right;
-        //         cur->right=cur->left;
-        //         cur->left=nullptr;
-        //     }
-        //     cur=cur->right;
-        // }
-        // return ;
-        
         TreeNode* cur=root;
         while(cur)
         {
             if(cur->left)
             {
-                TreeNode* tmp=cur->left;
-                while(tmp->right)
+                TreeNode* prev=cur->left;
+                while(prev->right)
                 {
-                    tmp=tmp->right;
+                    prev=prev->right;
                 }
-                tmp->right=cur->right;
+                prev->right=cur->right;
                 cur->right=cur->left;
                 cur->left=nullptr;
             }
             cur=cur->right;
         }
-        
+        return ;
     }
 };
