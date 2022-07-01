@@ -16,13 +16,13 @@ public:
         
         // Method 1 Right,Left,Root, using prev
         // TC O(n) && SC O(n)
-        if(root==nullptr)
-            return;
-        flatten(root->right);
-        flatten(root->left);
-        root->right=pre;
-        root->left=nullptr;
-        pre=root;
+        // if(root==nullptr)
+        //     return;
+        // flatten(root->right);
+        // flatten(root->left);
+        // root->right=pre;
+        // root->left=nullptr;
+        // pre=root;
         
         // Method 2 Modified Morris
         // TreeNode* cur=root;
