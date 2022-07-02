@@ -28,10 +28,6 @@ public:
         }
         if(cur->next)
             cur->next=cur->next->next;
-        else
-        {   
-            return head->next;
-        }
         return head;
     }
 };
