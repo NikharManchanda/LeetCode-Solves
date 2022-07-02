@@ -17,8 +17,8 @@ public:
             fast=fast->next->next;
             slow=slow->next;
         }
-        // if(fast && !fast->next)
-        //     slow=slow->next;
+        if(fast && !fast->next)
+            slow=slow->next;
         ListNode* nxt=nullptr,*pre=nullptr;
         while(slow)
         {
