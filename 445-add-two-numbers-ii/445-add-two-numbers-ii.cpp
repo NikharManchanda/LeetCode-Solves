@@ -15,10 +15,15 @@ public:
             return head;
         if(head->next==nullptr)
             return head;
-        ListNode* nxt=reverse(head->next);
-        head->next->next=head;
-        head->next=nullptr;
-        return nxt;
+        ListNode* pre=nullptr,*nxt=nullptr;
+        while(head)
+        {
+            nxt=head->next;
+            head->next=pre;
+            pre=head;
+            head=nxt;
+        }
+        return pre;
     }
     ListNode* addTwoNumber(ListNode* l1, ListNode* l2) {
         ListNode* root=new ListNode(),*head=root;
