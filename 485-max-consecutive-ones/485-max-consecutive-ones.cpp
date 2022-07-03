@@ -9,9 +9,7 @@ public:
             if(nums[i]==1)
                 x++;
             else
-            {
                 x=0;
-            }
             ans=max(ans,x);
         }
         // ans=max(ans,x);
