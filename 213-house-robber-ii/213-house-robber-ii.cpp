@@ -4,10 +4,12 @@ public:
         int n=nums.size();
         if(n==1)
             return nums[0];
-        return max(robHelper(nums,1,n),robHelper(nums,0,n-1));
+        return max(nums[0]+robHelper(nums,2,n-1),robHelper(nums,1,n));
     }
 private:
     int robHelper(vector<int>& nums,int l ,int r) {
+        if(l>=r)
+            return 0;
         int n=r-l+1;
         
         int prev1=nums[l],prev2=0;
@@ -19,7 +21,6 @@ private:
             int cur=max(val,val2);
             prev2=prev1;
             prev1=cur;
-            
         }
         
         return prev1;
