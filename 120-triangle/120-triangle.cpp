@@ -2,23 +2,26 @@ class Solution {
 public:
     int minimumTotal(vector<vector<int>>& triangle) {
         int n=triangle.size(),ans=INT_MAX;
-        vector<vector<int>>dp(n,vector<int>(n,INT_MAX));
+        vector<int> dp(n,INT_MAX);
         for(int i=0;i<n;i++)
         {
+            vector<int> cur(n,INT_MAX);
             for(int j=0;j<=i;j++)
             {
-                dp[i][j]=triangle[i][j];
+                cur[j]=triangle[i][j];
                 if(i>=1)
                 {   
                     if(j>=1)
-                        dp[i][j]+=min(dp[i-1][j-1],dp[i-1][j]);
+                        cur[j]+=min(dp[j-1],dp[j]);
                     else 
-                        dp[i][j]+=dp[i-1][j];
+                        cur[j]+=dp[j];
                 }
                 if(i==n-1)
-                    ans=min(ans,dp[i][j]);
+                    ans=min(ans,cur[j]);
             }
+            dp=cur;
         }
         return ans;
     }
+    
 };
