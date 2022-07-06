@@ -51,22 +51,21 @@ public:
         vector<int>dp(m);        
         for(int i=0;i<n;i++)
         {
-            vector<int> cur(m);
             for(int j=0;j<m;j++)
             {
-                cur[j]=grid[i][j];
                 if(i==0 && j==0)
                 {
+                    dp[j]=grid[i][j];
                     continue;
                 }
                 if(i==0)
-                    cur[j]+=cur[j-1];
+                    dp[j]=dp[j-1];
                 else if(j==0)
-                    cur[j]+=dp[j];
+                    dp[j]=dp[j];
                 else 
-                    cur[j]+=min(dp[j],cur[j-1]);
+                    dp[j]=min(dp[j],dp[j-1]);
+                dp[j]+=grid[i][j];
             }
-            dp=cur;
         }
         return dp[m-1];
     }
