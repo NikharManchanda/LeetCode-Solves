@@ -19,8 +19,7 @@ public:
     // Space Optimised
     int rob(vector<int>& nums) {
         int n=nums.size();
-        int prev1=0,prev2=0;
-        prev1=nums[0];
+        int prev1=nums[0],prev2=0;
         for(int i=1;i<n;i++)
         {
             int val=prev1,val2=nums[i];
