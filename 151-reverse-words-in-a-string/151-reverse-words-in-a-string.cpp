@@ -7,13 +7,11 @@ public:
         vector<string> temp;
         while(stream >> cur)
         {
-            temp.push_back(cur);
+            if(ans!="")
+                ans=cur+" "+ans;
+            else
+                ans=cur;
         }
-        reverse(temp.begin(),temp.end());
-        for(auto x: temp)
-        {
-            ans+=" "+x;
-        }
-        return ans.substr(1);
+        return ans;
     }
 };
