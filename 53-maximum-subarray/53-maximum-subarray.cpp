@@ -1,6 +1,7 @@
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
+        ios_base::sync_with_stdio(false);cin.tie(nullptr);
         int sum=nums[0];
         vector<int> dp(nums.size(),nums[0]);
         for(int i=1;i<nums.size();i++)
