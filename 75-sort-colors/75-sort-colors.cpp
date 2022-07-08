@@ -12,7 +12,7 @@ public:
         {
             while(c[l]==0)
                 l++;
-            if(c[l]!=0)
+            if(c[l])
             {
                 nums[i]=l;
                 c[l]--;
