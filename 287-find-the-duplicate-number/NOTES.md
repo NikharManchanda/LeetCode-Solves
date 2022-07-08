@@ -1,1 +1,2 @@
-​
+For Set Bits Method
+To illustrate this, consider the same array but with the duplicate occurring more than twice: [3,1,3,3,3][3,1,3,3,3] (we've replaced both 22 and 44 with 33). base\_countbase_count will remain [1,2,2][1,2,2] because nn still equals 44. However, nums\_countnums_count becomes [0,4,5][0,4,5]. Comparing nums\_countnums_count to base\_countbase_count, we see that the bit count difference is [0,4,5][0,4,5] - [1,2,2][1,2,2] = [-1,2,3][−1,2,3]. If we consider just the positive counts (seen at positions 0 and 1), this, again is the equivalent of the number 33, which is the duplicate number.
