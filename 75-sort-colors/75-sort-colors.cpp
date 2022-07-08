@@ -10,7 +10,7 @@ public:
         int l=0;
         for(int i=0;i<nums.size();i++)
         {
-            while(l<3 && c[l]==0)
+            while(c[l]==0)
                 l++;
             if(c[l]!=0)
             {
