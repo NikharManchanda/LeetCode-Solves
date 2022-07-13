@@ -4,7 +4,7 @@ public:
         int sum=2000,S=0;
         for(auto x: nums)
             S+=x;
-        vector<vector<int>>dp(nums.size(),vector<int>(8000+1));
+        vector<vector<int>>dp(nums.size(),vector<int>(4000+1));
         dp[0][nums[0]+sum]=1;
         dp[0][-nums[0]+sum]+=1;
         for(int i=1;i<nums.size();i++){
