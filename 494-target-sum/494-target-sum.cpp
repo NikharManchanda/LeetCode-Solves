@@ -6,17 +6,19 @@ public:
             sum+=x;
         if(target>sum || target<-sum)
             return 0;
-        vector<vector<int>>dp(nums.size(),vector<int>(2*sum+1));
-        dp[0][sum+nums[0]]=1;
-        dp[0][sum-nums[0]]+=1;
+        vector<int>prev(2*sum+1);
+        prev[sum+nums[0]]=1;
+        prev[sum-nums[0]]+=1;
         for(int i=1;i<nums.size();i++){
+            vector<int> cur(2*sum+1);
             for(int j=0;j<2*sum+1;j++){
-                if(dp[i-1][j]!=0){
-                    dp[i][j+nums[i]]+=dp[i-1][j];
-                    dp[i][j-nums[i]]+=dp[i-1][j];
+                if(prev[j]!=0){
+                    cur[j+nums[i]]+=prev[j];
+                    cur[j-nums[i]]+=prev[j];
                 }
             }
+            prev=cur;
         }
-        return dp[nums.size()-1][target+sum];
+        return prev[target+sum];
     }
 };
