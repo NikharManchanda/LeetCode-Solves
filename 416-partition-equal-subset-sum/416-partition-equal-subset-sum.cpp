@@ -6,19 +6,22 @@ public:
             sum+=x;
         if(sum%2==1)
             return 0;
-        vector<vector<int>>dp(nums.size(),vector<int>(sum/2+1,-1));
-        return subsetSum(nums.size()-1,nums,sum/2,dp);
+        return subsetSum(nums,sum/2);
     }
-    bool subsetSum(int idx,vector<int>&nums,int sum,vector<vector<int>>&dp){
-        if(sum==0)
-            return 1;
-        if(idx==0)
-            return nums[0]==sum;
-        if(dp[idx][sum]!=-1)
-            return dp[idx][sum];
-        bool ok=subsetSum(idx-1,nums,sum,dp);
-        if(sum>=nums[idx])
-            ok=ok||subsetSum(idx-1,nums,sum-nums[idx],dp);
-        return dp[idx][sum]= ok;
+    bool subsetSum(vector<int>&nums,int sum){
+        vector<vector<bool>>dp(nums.size(),vector<bool>(sum+1,0));
+        for(int i=0;i<nums.size();i++){
+            dp[i][0]=1;
+        }
+        if(nums[0]<=sum)
+            dp[0][nums[0]]=1;
+        for(int i=1;i<nums.size();i++){
+            for(int j=1;j<=sum;j++){
+                dp[i][j]=dp[i-1][j];
+                if(j>=nums[i])
+                    dp[i][j]=dp[i][j]||dp[i-1][j-nums[i]];
+            }
+        }
+        return dp[nums.size()-1][sum];
     }
 };
