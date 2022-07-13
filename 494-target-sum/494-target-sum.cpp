@@ -1,23 +1,20 @@
 class Solution {
 public:
-    int helper(int idx,int target,vector<int>&nums,vector<vector<int>>&dp,int S){
-        
-        if(idx==-1)
-            return target==0;
-        
-        if(dp[idx][target+2000]!=-1)
-            return dp[idx][target+2000];
-        
-        return dp[idx][target+2000]=helper(idx-1,target-nums[idx],nums,dp,S)
-            +helper(idx-1,target+nums[idx],nums,dp,S);
-    }
     int findTargetSumWays(vector<int>& nums, int target) {
-        int S=0;
-        for(int i=0;i<nums.size();i++)
-        { 
-            S+=nums[i];
+        int sum=2000,S=0;
+        for(auto x: nums)
+            S+=x;
+        vector<vector<int>>dp(nums.size(),vector<int>(8000+1));
+        dp[0][nums[0]+sum]=1;
+        dp[0][-nums[0]+sum]+=1;
+        for(int i=1;i<nums.size();i++){
+            
+            for(int j=-S;j<=S;j++)
+            {
+                dp[i][j+sum]=dp[i-1][j-nums[i]+sum];
+                dp[i][j+sum]+=dp[i-1][j+nums[i]+sum];
+            }
         }
-        vector<vector<int>>dp(nums.size()+1,vector<int>(2*2000+1,-1));
-        return helper(nums.size()-1,target,nums,dp,S);
+        return dp[nums.size()-1][target+sum];
     }
 };
