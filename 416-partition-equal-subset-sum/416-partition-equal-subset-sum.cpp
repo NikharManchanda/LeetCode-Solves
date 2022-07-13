@@ -1,6 +1,7 @@
 class Solution {
 public:
     bool canPartition(vector<int>& nums) {
+        ios_base::sync_with_stdio(false);cin.tie(nullptr);
         int sum=0;
         for(auto x: nums)
             sum+=x;
