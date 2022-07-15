@@ -16,10 +16,7 @@ public:
                 x=(i>=1)?dp[i-1][j]:0;
                 y=(j>=1)?dp[i][j-1]:0;
                 z=(i>=1 && j>=1)?dp[i-1][j-1]:0;
-                if(x==y && y==z)
-                    dp[i][j]=x+1;
-                else
-                    dp[i][j]=1+min({x,y,z});
+                dp[i][j]=1+min({x,y,z});
                 ans=max(ans,dp[i][j]);
             }
         }
