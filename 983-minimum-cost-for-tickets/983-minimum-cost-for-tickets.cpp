@@ -23,7 +23,34 @@ public:
         return dp[idx]=min({a,b,c});
     }
     int mincostTickets(vector<int>& nums, vector<int>& costs) {
-        vector<int>dp(nums.size()+1,-1);
-        return rec(0,nums,costs,dp);
+        
+        // Rec+Mem
+        
+        // vector<int>dp(nums.size()+1,-1);
+        // return rec(0,nums,costs,dp);
+        
+        // Tabular
+        int n=nums.size();
+        vector<int> dp(n+1,INT_MAX);
+        dp[n]=0;
+        for(int idx=n-1;idx>=0;idx--)
+        {
+            int a,b,c;
+            a=costs[0]+dp[idx+1];
+            int i=idx;
+            while(i<nums.size() && nums[i]<=nums[idx]+6)
+            {
+               i++;
+            }
+            b=costs[1]+dp[i];
+            i=idx;
+            while(i<nums.size() && nums[i]<=nums[idx]+29)
+            {
+               i++;
+            }
+            c=costs[2]+dp[i];
+            dp[idx]=min({a,b,c});
+        }
+        return dp[0];
     }
 };
