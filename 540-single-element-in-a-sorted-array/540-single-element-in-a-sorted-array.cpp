@@ -8,7 +8,9 @@ public:
             if(nums[mid]==nums[mid^1])
                 l=mid+1;
             else
+            {
                 r=mid-1;
+            }
         }
         return nums[l];
     }
