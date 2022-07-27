@@ -12,11 +12,20 @@ public:
         // }
         // return pq.top();
         
-        priority_queue<int> pq(nums.begin(),nums.end());
-        for(int i=1;i<k;i++)
+        // priority_queue<int> pq(nums.begin(),nums.end());
+        // for(int i=1;i<k;i++)
+        // {
+        //     pq.pop();
+        // }
+        // return pq.top();
+        
+        multiset<int> s;
+        for(int i=0;i<nums.size();i++)
         {
-            pq.pop();
+            s.insert(nums[i]);
+            if(s.size()>k)
+                s.erase(s.begin());
         }
-        return pq.top();
+        return *s.begin();
     }
 };
