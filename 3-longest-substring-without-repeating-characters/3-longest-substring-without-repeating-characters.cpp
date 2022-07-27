@@ -6,10 +6,7 @@ public:
         for(int l=0,r=0;r<s.size();r++)
         {
             if(mp.find(s[r])!=mp.end()){
-                if(mp[s[r]]>=l)
-                {
-                    l=mp[s[r]]+1;
-                }
+                l=max(l,mp[s[r]]+1);
             }
             mp[s[r]]=r;
             ans=max(ans,r-l+1);
