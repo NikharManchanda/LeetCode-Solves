@@ -2,30 +2,32 @@ class Solution {
 public:
     
     int findKthLargest(vector<int>& nums, int k) {
-        
-        // priority_queue<int,vector<int>,greater<int> > pq;
-        // for(int i=0;i<nums.size();i++)
-        // {
-        //     pq.push(nums[i]);
-        //     if(pq.size()>k)
-        //         pq.pop();
-        // }
-        // return pq.top();
-        
-        // priority_queue<int> pq(nums.begin(),nums.end());
-        // for(int i=1;i<k;i++)
-        // {
-        //     pq.pop();
-        // }
-        // return pq.top();
-        
-        multiset<int> s;
-        for(int i=0;i<nums.size();i++)
+        int l=0,r=nums.size()-1;
+        k=nums.size()-k;
+        while(l<=r)
         {
-            s.insert(nums[i]);
-            if(s.size()>k)
-                s.erase(s.begin());
+            int idx= quick_select(nums,l,r);
+            if(idx==k)
+                nums[idx];
+            if(idx<k)
+                l=idx+1;
+            else
+                r=idx-1;
         }
-        return *s.begin();
+        return nums[k];
+    }
+    int quick_select(vector<int>&nums,int l, int r){
+        int i=l,j=l,pivot=r;
+        while(j<pivot)
+        {
+            if(nums[j]<=nums[pivot])
+            {
+                swap(nums[j],nums[i]);
+                i++;
+            }
+            j++;
+        }
+        swap(nums[i],nums[pivot]);
+        return i;
     }
 };
