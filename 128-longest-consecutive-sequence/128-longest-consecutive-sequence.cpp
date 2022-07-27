@@ -3,12 +3,12 @@ public:
     int longestConsecutive(vector<int>& nums) {
         unordered_set<int> s(nums.begin(),nums.end());
         int ans=0;
-        for(int i=0;i<nums.size();i++)
+        for(auto i: s)
         {
-            if(s.find(nums[i]-1)==s.end())
+            if(s.find(i-1)==s.end())
             {
                 int c=1;
-                while(s.find(nums[i]+c)!=s.end())
+                while(s.find(i+c)!=s.end())
                 {
                     
                     c++;
