@@ -17,6 +17,8 @@ public:
         return nums[k];
     }
     int quick_select(vector<int>&nums,int l, int r){
+        int tmp_piv=(l+r)/2;
+        swap(nums[tmp_piv],nums[r]);
         int i=l,j=l,pivot=r;
         while(j<pivot)
         {
