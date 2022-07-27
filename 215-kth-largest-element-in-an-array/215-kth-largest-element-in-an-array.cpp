@@ -1,7 +1,7 @@
 class Solution {
 public:
-    
     int findKthLargest(vector<int>& nums, int k) {
+       ios_base::sync_with_stdio(false);cin.tie(nullptr);
         int l=0,r=nums.size()-1;
         k=nums.size()-k;
         while(l<=r)
