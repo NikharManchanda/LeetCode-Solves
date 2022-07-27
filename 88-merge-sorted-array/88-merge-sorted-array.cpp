@@ -13,7 +13,7 @@ public:
             else if(j>=0)
                 nums1[k--]=nums2[j--];
             else if(i>=0)
-                nums1[k--]=nums1[i--];
+                break;
         }
     }
 };
