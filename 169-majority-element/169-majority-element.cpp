@@ -13,11 +13,24 @@ public:
     //     return -1;
     // }
     
-    // Bank Algorithm
+    // Sort O(nlogn) Space O(1)
+//     int majorityElement(vector<int>& nums) {
+//         sort(nums.begin(),nums.end());
+//         int count=1,cur=nums[0];
+//         for(int i=0;i<nums.size();i++)
+//         {
+//             if(nums[i]==nums[i-1])
+//                 count++;
+//             else
+                
+//         }
+//     }
+
+    // Boyer-Moore Voting Algorithm O(n) Space O(1)
     int majorityElement(vector<int>& nums) {
-        int ans=nums[0];
-        int count=1;
-        for(int i=1;i<nums.size();i++)
+        int ans;
+        int count=0;
+        for(int i=0;i<nums.size();i++)
         {
             if(count==0)
                 ans=nums[i];
