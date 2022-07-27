@@ -11,7 +11,6 @@ public:
                     l=mp[s[r]]+1;
                 }
             }
-            // cout<<l<<" "<<r<<endl;
             mp[s[r]]=r;
             ans=max(ans,r-l+1);
         }
